@@ -1,6 +1,9 @@
 package com.example.musicalbumui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +23,14 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void play(View view) {
+        int id = view.getId();
+        LinearLayout layout = findViewById(id);
+        String tag = (String) layout.getTag();
+        Intent it = new Intent(this, AudioImage.class);
+        it.putExtra("it_tag", tag);
+        startActivity(it);
     }
 }
